@@ -13,8 +13,11 @@ c) The booking can be cancelled.
 To run:
 
 ->You can use any editor c++ compiler.
-ot
-->Run through terminal 
- 1> switch to folder directory 
- 2> g++ cinemax.cpp -o cinemax.exe
- 3> ./cinemax.exe
+
+or
+
+
+-> Run through terminal 
+-> switch to folder directory 
+-> g++ cinemax.cpp -o cinemax.exe
+-> ./cinemax.exe
