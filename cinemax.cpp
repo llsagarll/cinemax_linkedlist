@@ -1,5 +1,4 @@
-#include <iostream>
-#include<stdlib.h>
+#include <bits/stdc++.h>
 using namespace std;
 class node
 {   public:
@@ -7,7 +6,7 @@ class node
     node* prev;
     int seat;
     string id;
-    int status;
+    bool status;
 };
 class cinemax
 {
@@ -29,7 +28,7 @@ void cinemax::create_list()
     int i=1;
     temp=new node;
     temp->seat=1;
-    temp->status=0;
+    temp->status=false;
     temp->id="null";
     tail=head=temp;
     for(int i=2;i<=70;i++)
@@ -37,7 +36,7 @@ void cinemax::create_list()
        node *p;
        p= new node;
        p->seat=i;
-       p->status=0;
+       p->status=false;
        p->id="null";
        tail->next=p;
        p->prev=tail;
@@ -63,7 +62,7 @@ void cinemax::display()
             cout<<"S0"<<temp->seat<<" :";
             else
             cout<<"S"<<temp->seat<<" :";
-            if(temp->status==0)
+            if(temp->status==false)
             cout<<"|___| ";
             else
             cout<<"|_B_| ";
@@ -78,7 +77,7 @@ void cinemax::display()
             temp=temp->next;
         }
             cout<<"S"<<temp->seat<<" :";
-            if(temp->status==0)
+            if(temp->status==false)
             cout<<"|___| ";
             else
             cout<<"|_B_| ";
@@ -106,10 +105,10 @@ void cinemax::book()
     {
         temp=temp->next;
     }
-    if(temp->status==1)
+    if(temp->status==true)
     cout<<"seat already booked!\n";
     else{
-    temp->status=1;
+    temp->status=true;
     temp->id=y;
     cout<<"seat "<<x<<" booked!\n";
     }
@@ -137,7 +136,7 @@ void cinemax::cancel()
     {
         temp=temp->next;
     }
-    if(temp->status==0)
+    if(temp->status==false)
     {
         cout<<"seat not booked yet!!\n";
     }
@@ -145,7 +144,7 @@ void cinemax::cancel()
     {
 	if(temp->id==y)
 	{
-    temp->status=0;
+    temp->status=false;
     cout<<"seat cancelled!\n";
 
 	}
@@ -171,9 +170,9 @@ void cinemax::avail()
             		cout<<"S0"<<temp->seat<<" :";
             		else
            			 cout<<"S"<<temp->seat<<" :";
-			            if(temp->status==0)
+			            if(temp->status==false)
 			            cout<<"|___| ";
-				    else if(temp->status==1)
+				    else if(temp->status==true)
 			            cout<<"      ";
 			            count++;
 			            if(count%7==0)
@@ -186,10 +185,10 @@ void cinemax::avail()
 			        }
 			         temp=temp->next;
 			}
-			           if(temp->status==0)
+			           if(temp->status==false)
 					{
 					    cout<<"S"<<temp->seat<<" :";
-			            if(temp->status==0)
+			            if(temp->status==false)
 			            cout<<"|___| ";
 					}
 
@@ -203,7 +202,7 @@ int main()
     char c='y';
     while(c=='y')
     {	obj.display();
-		cout<<"\n		*********************************************\n";
+		cout<<"\n	*********************************************\n";
 		cout<<"			  CINEMAX MOVIE THEATRE		  \n";
 		cout<<"		*********************************************\n";
 	    cout<<"\nEnter choice\n1.Current seat status\n2.Book seat \n3.Available seat\n4.Cancel seat\n";
